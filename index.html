@@ -42,16 +42,31 @@
     min-height: min(88vh, 720px);
     display: flex;
     align-items: flex-end;
-    background: #000 url("images/hero.jpg") center / cover no-repeat;
+    background: var(--bg);
+    overflow: hidden;
   }
+  .hero-bg {
+    position: absolute; inset: 0; z-index: 0;
+    background: url("images/hero.jpg") center / cover no-repeat;
+  }
+  /* 開いた時の登場：絵は右から、札・店名・物語は左から、ボタンは下から */
+  @keyframes from-right  { from { opacity: 0; transform: translateX(70px); }  to { opacity: 1; transform: none; } }
+  @keyframes from-left   { from { opacity: 0; transform: translateX(-46px); } to { opacity: 1; transform: none; } }
+  @keyframes from-bottom { from { opacity: 0; transform: translateY(36px); }  to { opacity: 1; transform: none; } }
+  .hero-bg        { animation: from-right 1.4s cubic-bezier(.2,.7,.2,1) backwards; }
+  .hero .eyebrow  { animation: from-left 1s cubic-bezier(.2,.7,.2,1) .35s backwards; }
+  .hero h1        { animation: from-left 1s cubic-bezier(.2,.7,.2,1) .55s backwards; }
+  .hero .scroller { animation: from-left 1s cubic-bezier(.2,.7,.2,1) .75s backwards; }
+  .hero .btns .btn            { animation: from-bottom .9s cubic-bezier(.2,.7,.2,1) 1.15s backwards; }
+  .hero .btns .btn + .btn     { animation-delay: 1.3s; }
   .hero::before {
     content: "";
-    position: absolute; inset: 0;
+    position: absolute; inset: 0; z-index: 1;
     background:
       linear-gradient(90deg, rgba(20,16,12,.72) 0%, rgba(20,16,12,.35) 45%, rgba(20,16,12,0) 70%),
       linear-gradient(180deg, rgba(20,16,12,.1) 0%, rgba(20,16,12,.2) 60%, var(--bg) 100%);
   }
-  .hero .wrap { position: relative; width: 100%; padding-top: 120px; padding-bottom: 56px; }
+  .hero .wrap { position: relative; z-index: 2; width: 100%; padding-top: 120px; padding-bottom: 56px; }
   .eyebrow {
     display: inline-block;
     font-size: clamp(14px, 1.9vw, 17px); font-weight: 700; letter-spacing: .08em;
@@ -317,11 +332,10 @@
   }
   @media (max-width: 620px) {
     /* スマホ：上にマスターの絵、その下に文字 */
-    .hero {
-      min-height: 0;
+    .hero { min-height: 0; }
+    .hero-bg {
       background-size: auto 72vw;
       background-position: 92% top;
-      background-color: var(--bg);
     }
     .hero::before {
       background: linear-gradient(180deg, rgba(20,16,12,0) 0, rgba(20,16,12,0) 46vw, var(--bg) 72vw);
@@ -359,6 +373,7 @@
 <body>
 
 <header class="hero">
+  <div class="hero-bg" aria-hidden="true"></div>
   <div class="wrap">
     <p class="eyebrow">YouTubeのBGMチャンネル<span class="eb-sub">｜作業用・読書用・睡眠用</span></p>
     <h1><span>ハシビロコウの</span><span>BGM喫茶</span></h1>
