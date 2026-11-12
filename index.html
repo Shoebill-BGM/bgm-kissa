@@ -57,16 +57,16 @@
   @keyframes from-bottom { from { opacity: 0; transform: translateY(36px); }  to { opacity: 1; transform: none; } }
   /* 絵：真っ暗でぼやけた状態から、ゆっくりピントが合いながら浮かび上がる */
   @keyframes bloom {
-    0%   { opacity: 0;   transform: scale(1.1);  filter: blur(18px) brightness(.6); }
-    45%  { opacity: .75; filter: blur(7px) brightness(.9); }
+    0%   { opacity: 0;   transform: scale(1.05); filter: blur(8px) brightness(.8); }
+    45%  { opacity: .8;  filter: blur(3px) brightness(.95); }
     100% { opacity: 1;   transform: none;        filter: none; }
   }
   .pre .hero-bg, .pre .hero .eyebrow, .pre .hero h1, .pre .hero .btns .btn { opacity: 0; }
-  .go .hero-bg        { animation: bloom 3.2s cubic-bezier(.3,.5,.3,1) backwards; }
-  .go .hero .eyebrow  { animation: from-left 1s cubic-bezier(.2,.7,.2,1) 1s backwards; }
-  .go .hero h1        { animation: from-left 1s cubic-bezier(.2,.7,.2,1) 1.2s backwards; }
-  .go .hero .btns .btn        { animation: from-bottom .9s cubic-bezier(.2,.7,.2,1) 1.9s backwards; }
-  .go .hero .btns .btn + .btn { animation-delay: 2.05s; }
+  .go .hero-bg        { animation: bloom 2.5s cubic-bezier(.3,.5,.3,1) backwards; }
+  .go .hero .eyebrow  { animation: from-left 1s cubic-bezier(.2,.7,.2,1) .7s backwards; }
+  .go .hero h1        { animation: from-left 1s cubic-bezier(.2,.7,.2,1) .9s backwards; }
+  .go .hero .btns .btn        { animation: from-bottom .9s cubic-bezier(.2,.7,.2,1) 1.55s backwards; }
+  .go .hero .btns .btn + .btn { animation-delay: 1.7s; }
   .hero::before {
     content: "";
     position: absolute; inset: 0; z-index: 1;
@@ -537,7 +537,7 @@
     const nudge = (px) => { pos += px; draw(); holdUntil = performance.now() + 3000; };
     Promise.all([document.fonts && document.fonts.ready ? document.fonts.ready : Promise.resolve(), heroReady]).then(() => {
       measure();
-      holdUntil = performance.now() + 1100;   // 登場の動きが落ち着く頃に、1文目が上がってくる
+      holdUntil = performance.now() + 800;   // 登場の動きが落ち着く頃に、1文目が上がってくる
       startPos = pos = -scroller.clientHeight;   // 1文目は窓の外（見えない位置）から。表紙の登場が終わる頃に出てくる
       draw();
       scroller.classList.add("ready");
