@@ -50,13 +50,12 @@
     background: url("images/hero.jpg") center / cover no-repeat;
   }
   /* 開いた時の登場：絵は右から、札・店名・物語は左から、ボタンは下から */
-  @keyframes from-right  { from { opacity: 0; transform: translateX(70px); }  to { opacity: 1; transform: none; } }
+  @keyframes from-right  { 0% { opacity: 0; transform: translateX(60%); } 35% { opacity: 1; } 100% { opacity: 1; transform: none; } }
   @keyframes from-left   { from { opacity: 0; transform: translateX(-46px); } to { opacity: 1; transform: none; } }
   @keyframes from-bottom { from { opacity: 0; transform: translateY(36px); }  to { opacity: 1; transform: none; } }
-  .hero-bg        { animation: from-right 1.4s cubic-bezier(.2,.7,.2,1) backwards; }
+  .hero-bg        { animation: from-right 1.8s cubic-bezier(.2,.7,.2,1) backwards; }
   .hero .eyebrow  { animation: from-left 1s cubic-bezier(.2,.7,.2,1) .35s backwards; }
   .hero h1        { animation: from-left 1s cubic-bezier(.2,.7,.2,1) .55s backwards; }
-  .hero .scroller { animation: from-left 1s cubic-bezier(.2,.7,.2,1) .75s backwards; }
   .hero .btns .btn            { animation: from-bottom .9s cubic-bezier(.2,.7,.2,1) 1.15s backwards; }
   .hero .btns .btn + .btn     { animation-delay: 1.3s; }
   .hero::before {
