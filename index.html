@@ -161,8 +161,8 @@
     line-height: 1.55;
     color: #f6eee2;
     text-shadow: 0 1px 12px rgba(0,0,0,.8);
-    -webkit-mask-image: linear-gradient(180deg, transparent 0, #000 12%, #000 72%, transparent 100%);
-            mask-image: linear-gradient(180deg, transparent 0, #000 12%, #000 72%, transparent 100%);
+    -webkit-mask-image: linear-gradient(180deg, transparent 0, #000 12%, #000 86%, transparent 100%);
+            mask-image: linear-gradient(180deg, transparent 0, #000 12%, #000 86%, transparent 100%);
   }
   .scroller .track { padding-top: 1em; will-change: transform; visibility: hidden; }
   .scroller.ready .track { visibility: visible; }
@@ -548,7 +548,7 @@
     const nudge = (px) => { pos += px; draw(); holdUntil = performance.now() + 3000; };
     Promise.all([document.fonts && document.fonts.ready ? document.fonts.ready : Promise.resolve(), heroReady]).then(() => {
       measure();
-      holdUntil = performance.now() + 2100;   // ボタンが出終わる頃（約2.3秒）のすぐ後に、1文目が上がり始める   // 登場の動きが落ち着く頃に、1文目が上がってくる
+      holdUntil = performance.now() + 900;    // ボタンが出てくるのと同じ頃に、1文目も見えてくる   // 登場の動きが落ち着く頃に、1文目が上がってくる
       // 1文目は、窓の下のふちのすぐ外（見えない位置）で待つ。動き出したら、すぐ窓に入ってくる
       startPos = pos = -(scroller.clientHeight - parseFloat(getComputedStyle(track).paddingTop) + 2);
       draw();
