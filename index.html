@@ -65,8 +65,9 @@
   .go .hero-bg        { animation: bloom 2.5s cubic-bezier(.3,.5,.3,1) backwards; }
   .go .hero .eyebrow  { animation: from-left 1s cubic-bezier(.2,.7,.2,1) .7s backwards; }
   .go .hero h1        { animation: from-left 1s cubic-bezier(.2,.7,.2,1) .9s backwards; }
-  /* ボタン2つは、店名と同じタイミング・同じ長さで出す */
-  .go .hero .btns .btn        { animation: from-bottom 1s cubic-bezier(.2,.7,.2,1) .9s backwards; }
+  /* ボタン2つは、店名より少しだけ遅れて出す（上から順に、ほんの少しずつ） */
+  .go .hero .btns .btn        { animation: from-bottom 1s cubic-bezier(.2,.7,.2,1) 1.2s backwards; }
+  .go .hero .btns .btn + .btn { animation-delay: 1.3s; }
   .hero::before {
     content: "";
     position: absolute; inset: 0; z-index: 1;
