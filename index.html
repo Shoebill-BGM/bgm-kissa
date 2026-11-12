@@ -351,7 +351,17 @@
     .hero .wrap { padding-top: 60vw; padding-bottom: 36px; }
     .eyebrow .eb-sub { display: none; }
     .points ul { grid-template-columns: 1fr; }
-    .grid { grid-template-columns: 1fr; }
+    /* スマホ：動画のカードを小さくして、横に2つ並べる */
+    .grid { grid-template-columns: repeat(2, 1fr); gap: 12px; }
+    .card { border-radius: 10px; }
+    .card .body { padding: 9px 10px 12px; }
+    .card .genre { font-size: 10.5px; letter-spacing: .02em; }
+    .card .name { font-size: 14px; line-height: 1.45; margin-bottom: 7px; }
+    .card .tags { gap: 4px; }
+    .card .tags li { font-size: 10px; padding: 0 7px; }
+    .card .date { font-size: 10.5px; margin-top: 7px; }
+    .card .thumb::after { width: 26px; height: 26px; font-size: 10px; right: 6px; bottom: 6px; padding-left: 2px; }
+    .card .new { left: 6px; top: 6px; font-size: 10px; padding: 0 8px; }
     .today { padding-top: 24px; }
     .today .box { grid-template-columns: 1fr; gap: 22px; padding: 22px 18px; }
     /* スマホの並び：マスターの見出し → せりふ → 動画の画像 → 題名 → ボタン */
