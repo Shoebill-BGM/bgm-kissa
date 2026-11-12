@@ -332,7 +332,16 @@
     .grid { grid-template-columns: 1fr; }
     .today { padding-top: 24px; }
     .today .box { grid-template-columns: 1fr; gap: 22px; padding: 22px 18px; }
-    .today .pick-thumb { order: -1; }
+    /* スマホの並び：マスターの見出し → せりふ → 動画の画像 → 題名 → ボタン */
+    .today .box { gap: 0; }
+    .today .box > div { display: contents; }
+    .today .master { order: 1; }
+    .today .say { order: 2; margin-bottom: 16px; }
+    .today .pick-thumb { order: 3; margin-bottom: 18px; }
+    .today .pick-name { order: 4; }
+    .today .pick-genre { order: 5; margin-bottom: 16px; }
+    .today #today-btn { order: 6; justify-self: start; }
+    .today .note { order: 7; }
     .master img { width: 72px; height: 72px; }
     .master .hello { font-size: 18px; }
     .btns .btn { width: 100%; }
