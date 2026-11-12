@@ -54,6 +54,14 @@
   @keyframes from-left   { from { opacity: 0; transform: translateX(-46px); } to { opacity: 1; transform: none; } }
   @keyframes from-bottom { from { opacity: 0; transform: translateY(36px); }  to { opacity: 1; transform: none; } }
   .hero-bg        { animation: from-right 1.8s cubic-bezier(.2,.7,.2,1) backwards; }
+  /* すべり込む間だけ、絵の左のふちを背景の色へぼかす（出終わったら消える） */
+  .hero-bg::before {
+    content: ""; position: absolute; top: 0; bottom: 0; left: -2px; width: 34%;
+    background: linear-gradient(90deg, var(--bg) 0%, rgba(20,16,12,.85) 22%, rgba(20,16,12,.45) 58%, rgba(20,16,12,0) 100%);
+    opacity: 0;
+    animation: edge-fade 1.8s linear both;
+  }
+  @keyframes edge-fade { 0%, 45% { opacity: 1; } 100% { opacity: 0; } }
   .hero .eyebrow  { animation: from-left 1s cubic-bezier(.2,.7,.2,1) .35s backwards; }
   .hero h1        { animation: from-left 1s cubic-bezier(.2,.7,.2,1) .55s backwards; }
   .hero .btns .btn            { animation: from-bottom .9s cubic-bezier(.2,.7,.2,1) 1.15s backwards; }
