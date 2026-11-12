@@ -548,8 +548,9 @@
     const nudge = (px) => { pos += px; draw(); holdUntil = performance.now() + 3000; };
     Promise.all([document.fonts && document.fonts.ready ? document.fonts.ready : Promise.resolve(), heroReady]).then(() => {
       measure();
-      holdUntil = performance.now() + 800;   // 登場の動きが落ち着く頃に、1文目が上がってくる
-      startPos = pos = -scroller.clientHeight;   // 1文目は窓の外（見えない位置）から。表紙の登場が終わる頃に出てくる
+      holdUntil = performance.now() + 2100;   // ボタンが出終わる頃（約2.3秒）のすぐ後に、1文目が上がり始める   // 登場の動きが落ち着く頃に、1文目が上がってくる
+      // 1文目は、窓の下のふちのすぐ外（見えない位置）で待つ。動き出したら、すぐ窓に入ってくる
+      startPos = pos = -(scroller.clientHeight - parseFloat(getComputedStyle(track).paddingTop) + 2);
       draw();
       scroller.classList.add("ready");
       requestAnimationFrame(tick);
