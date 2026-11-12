@@ -525,7 +525,7 @@
     const nudge = (px) => { pos += px; draw(); holdUntil = performance.now() + 3000; };
     (document.fonts && document.fonts.ready ? document.fonts.ready : Promise.resolve()).then(() => {
       measure();
-      startPos = pos = -Math.round(scroller.clientHeight * 0.74);   // 1文目を、窓の下のふちから出す
+      startPos = pos = -scroller.clientHeight;   // 1文目は窓の外（見えない位置）から。表紙の登場が終わる頃に出てくる
       draw();
       scroller.classList.add("ready");
       requestAnimationFrame(tick);
