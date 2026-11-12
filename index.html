@@ -525,7 +525,7 @@
     const copy = first.cloneNode(true);
     copy.setAttribute("aria-hidden", "true");
     track.appendChild(copy);
-    const SPEED = 16;          // 自動で流れる速さ（1秒あたりのpx）
+    const SPEED = 12;          // 自動で流れる速さ（1秒あたりのpx）
     let dist = 0, pos = 0, last = 0, paused = false;
     let intro = true;          // 開いた直後：窓は空で、1文目が下から上がってくる
     let startPos = 0;
@@ -548,7 +548,7 @@
     const nudge = (px) => { pos += px; draw(); holdUntil = performance.now() + 3000; };
     Promise.all([document.fonts && document.fonts.ready ? document.fonts.ready : Promise.resolve(), heroReady]).then(() => {
       measure();
-      holdUntil = performance.now() + 900;    // ボタンが出てくるのと同じ頃に、1文目も見えてくる   // 登場の動きが落ち着く頃に、1文目が上がってくる
+      holdUntil = performance.now() + 550;   // ボタンが出てくるのと同じ頃に、1文目も見えてくる   // 登場の動きが落ち着く頃に、1文目が上がってくる
       // 1文目は、窓の下のふちのすぐ外（見えない位置）で待つ。動き出したら、すぐ窓に入ってくる
       startPos = pos = -(scroller.clientHeight - parseFloat(getComputedStyle(track).paddingTop) + 2);
       draw();
